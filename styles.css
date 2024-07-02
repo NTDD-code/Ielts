@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.course-container {
+    display: flex;
+    height: 100vh;
+}
+
+.course-sidebar {
+    width: 300px;
+    background-color: #f7f7f7;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    overflow-y: auto;
+}
+
+.course-sidebar h2 {
+    margin-top: 0;
+}
+
+.course-section {
+    margin-bottom: 20px;
+}
+
+.course-section h3 {
+    cursor: pointer;
+    margin: 0;
+    padding: 10px;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.course-lectures {
+    display: none;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.course-lecture {
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.course-lecture span {
+    display: block;
+}
+
+.course-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.video-container {
+    position: relative;
+}
+
+.video-controls {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: none;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}

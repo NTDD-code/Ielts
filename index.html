@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course List</title>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css"> <!-- Plyr CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="course-container">
+        <div class="course-sidebar">
+            <h2>Course content</h2>
+            <div class="course-section">
+                <h3 onclick="toggleSection('section1')">
+                    KHÓA HỌC IELTS WRITING 6.0+ (Dành cho Học viên)</h3>
+                <div id="section1" class="course-lectures">
+                    <div class="course-lecture" onclick="loadVideo('ivA5kTyaryk', event)">
+                        <span>Unit 1   Task 1   Line 1</span>
+                        <span>29:04</span>
+                    </div>
+                    <div class="course-lecture" onclick="loadVideo('https://youtu.be/2uG7o6Lvm_I', event)">
+                        <span>2. Please Introduce Yourself</span>
+                        <span>1min</span>
+                    </div>
+                    <div class="course-lecture" onclick="loadVideo('YOUR_VIDEO_ID3', event)">
+                        <span>3. What every candidate should do and not do</span>
+                        <span>6min</span>
+                    </div>
+                    <!-- Add more lectures as needed -->
+                </div>
+            </div>
+            <!-- Add more sections as needed -->
+        </div>
+
+        <div class="course-content">
+            <div id="video-container" class="video-container">
+                <video id="player" controls crossorigin playsinline>
+                    <!-- Plyr will replace this with YouTube embed -->
+                </video>
+                <div id="video-controls" class="video-controls">
+                    <button onclick="playVideo()">Play ▶</button>
+                    <button onclick="pauseVideo()">Pause ▐▐</button>
+                    <button onclick="toggleFullscreen()">Fullscreen 📺</button>
+                    <div class="seek-bar">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="seek-slider" onchange="seekVideo(this.value)">
+                        <div id="progress" class="progress"></div>
+                    </div>
+                    <button onclick="toggleCaptions()">Toggle Captions</button>
+                    <label for="playbackRate">Speed:</label>
+                    <select id="playbackRate" onchange="setPlaybackRate(this.value)">
+                        <option value="0.5">0.5x</option>
+                        <option value="1" selected>1x</option>
+                        <option value="1.5">1.5x</option>
+                        <option value="2">2x</option>
+                    </select>
+                </div>
+                <div class="video-overlay" onmouseover="showControls()" onmouseout="hideControls()"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script> <!-- Plyr JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+</html>
