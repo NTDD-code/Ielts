@@ -100,3 +100,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
+
+function toggleCourseContent() {
+    const courseSidebar = document.querySelector('.course-sidebar');
+    const courseContainer = document.querySelector('.course-container');
+    
+    if (courseSidebar.classList.contains('hidden')) {
+        courseSidebar.classList.remove('hidden');
+        courseContainer.classList.remove('expanded');
+        adjustVideoSize(); // Thực hiện điều chỉnh kích thước video khi mở lại
+    } else {
+        courseSidebar.classList.add('hidden');
+        courseContainer.classList.add('expanded');
+    }
+}
+
+function adjustVideoSize() {
+    const videoContainer = document.getElementById('video-container');
+    videoContainer.style.width = '100%'; // Đảm bảo video chiếm toàn bộ chiều rộng
+    videoContainer.style.maxWidth = '800px'; // Đặt kích thước tối đa nếu cần
+}
+
