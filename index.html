@@ -6,31 +6,38 @@
     <title>Course List</title>
     <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css"> <!-- Plyr CSS -->
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/c62979c22b.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <button class="icon-button" onclick="toggleCourseContent()"> 
+        <i class="fas fa-bars"></i>
+    </button>
     <div class="course-container">
         <div class="course-sidebar">
-            <h2>Course content</h2>
+            <br><br>
+            <h2 id="course-content-header">Course content</h2>
             <div class="course-section">
-                <h3 onclick="toggleSection('section1')">
-                    KHÓA HỌC IELTS WRITING 6.0+ (Dành cho Học viên)</h3>
-                <div id="section1" class="course-lectures">
-                    <div class="course-lecture" onclick="loadVideo('ivA5kTyaryk', event)">
-                        <span>Unit 1   Task 1   Line 1</span>
-                        <span>29:04</span>
-                    </div>
-                    <div class="course-lecture" onclick="loadVideo('https://youtu.be/2uG7o6Lvm_I', event)">
-                        <span>Unit 2: Task 1 Line (2) </span>
-                        <span>1min</span>
-                    </div>
-                    <div class="course-lecture" onclick="loadVideo('https://youtu.be/DKGpCCYnI_o', event)">
-                        <span>Unit 3: Task 1 Line (3) </span>
-                        <span>6min</span>
-                    </div>
-                    <!-- Add more lectures as needed -->
-                </div>
+                <h3 onclick="toggleSection('section1')">KHÓA HỌC IELTS WRITING 6.0+ (Dành cho Học viên)</h3>
             </div>
-            <!-- Add more sections as needed -->
+            <div id="section1" class="course-lectures">
+                <div class="course-lecture" onclick="loadVideo('ivA5kTyaryk', event)">
+                    <span>Unit 1   Task 1   Line 1</span>
+                    <span>time</span>
+                    <a href="path/to/document1.pdf" class="download-button" download>Download Document</a>
+                </div>
+                <div class="course-lecture" onclick="loadVideo('https://youtu.be/2uG7o6Lvm_I', event)">
+                    <span>Unit 2: Task 1 Line (2)</span>
+                    <span>time</span>
+                    <a href="path/to/document2.pdf" class="download-button" download>Download Document</a>
+                </div>
+                <div class="course-lecture" onclick="loadVideo('https://youtu.be/DKGpCCYnI_o', event)">
+                    <span>Unit 3: Task 1 Line (3)</span>
+                    <span>time</span>
+                    <a href="path/to/document3.pdf" class="download-button" download>Download Document</a>
+                </div>
+                    
+                
+            </div>
         </div>
 
         <div class="course-content">
@@ -38,23 +45,6 @@
                 <video id="player" controls crossorigin playsinline>
                     <!-- Plyr will replace this with YouTube embed -->
                 </video>
-                <div id="video-controls" class="video-controls">
-                    <button onclick="playVideo()">Play ▶</button>
-                    <button onclick="pauseVideo()">Pause ▐▐</button>
-                    <button onclick="toggleFullscreen()">Fullscreen 📺</button>
-                    <div class="seek-bar">
-                        <input type="range" min="0" max="100" value="0" class="slider" id="seek-slider" onchange="seekVideo(this.value)">
-                        <div id="progress" class="progress"></div>
-                    </div>
-                    <button onclick="toggleCaptions()">Toggle Captions</button>
-                    <label for="playbackRate">Speed:</label>
-                    <select id="playbackRate" onchange="setPlaybackRate(this.value)">
-                        <option value="0.5">0.5x</option>
-                        <option value="1" selected>1x</option>
-                        <option value="1.5">1.5x</option>
-                        <option value="2">2x</option>
-                    </select>
-                </div>
                 <div class="video-overlay" onmouseover="showControls()" onmouseout="hideControls()"></div>
             </div>
         </div>
