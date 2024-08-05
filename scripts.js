@@ -1,7 +1,7 @@
 // Function to toggle the visibility of the "Course content" section
 function toggleCourseContent() {
     const courseSidebar = document.querySelector('.course-sidebar');
-    courseSidebar.style.display = courseSidebar.style.display === 'none' || courseSidebar.style.display === '' ? 'block' : 'none';
+    courseSidebar.classList.toggle('hidden');
     console.log('Toggled course content visibility:', courseSidebar.style.display);
 }
 
@@ -59,4 +59,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     console.log('Plyr initialized');
+});
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const resizer = document.querySelector('.resizer');
+    const sidebar = document.querySelector('.course-sidebar');
+    const container = document.querySelector('.course-container');
+    let isResizing = false;
+
+    resizer.addEventListener('mousedown', function(e) {
+        isResizing = true;
+        document.addEventListener('mousemove', resizeSidebar);
+        document.addEventListener('mouseup', stopResizing);
+    });
+
+    function resizeSidebar(e) {
+        if (!isResizing) return;
+        let newWidth = e.clientX - sidebar.getBoundingClientRect().left;
+        if (newWidth > 100 && newWidth < 600) { // min and max width
+            sidebar.style.width = newWidth + 'px';
+            container.style.gridTemplateColumns = `${newWidth}px auto`;
+        }
+    }
+
+    function stopResizing() {
+        isResizing = false;
+        document.removeEventListener('mousemove', resizeSidebar);
+        document.removeEventListener('mouseup', stopResizing);
+    }
+
+    // Function to toggle the visibility of the "Course content" section
+    window.toggleCourseContent = function() {
+        sidebar.classList.toggle('hidden');
+        if (sidebar.classList.contains('hidden')) {
+            sidebar.style.width = '0';
+        } else {
+            sidebar.style.width = '250px';
+        }
+    }
 });
