@@ -1,27 +1,20 @@
-let player;
-let controlsVisible = false;
-
-function toggleSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    section.style.display = section.style.display === 'block' ? 'none' : 'block';
+// Function to toggle the visibility of the "Course content" section
+function toggleCourseContent() {
+    const courseSidebar = document.querySelector('.course-sidebar');
+    courseSidebar.style.display = courseSidebar.style.display === 'none' || courseSidebar.style.display === '' ? 'block' : 'none';
+    console.log('Toggled course content visibility:', courseSidebar.style.display);
 }
 
+// Function to load video using Plyr
 function loadVideo(videoId, event) {
-    event.stopPropagation(); // Prevent the section from collapsing
+    event.preventDefault();
+    console.log('Loading video:', videoId);
 
+    // Clear the existing video container
     const videoContainer = document.getElementById('video-container');
-    videoContainer.innerHTML = ''; // Clear the container
+    videoContainer.innerHTML = '';
 
-    const source = {
-        type: 'video',
-        sources: [
-            {
-                src: videoId,
-                provider: 'youtube',
-            },
-        ],
-    };
-
+    // Create a new video element
     const videoElement = document.createElement('video');
     videoElement.id = 'player';
     videoElement.controls = true;
@@ -29,74 +22,41 @@ function loadVideo(videoId, event) {
     videoElement.setAttribute('playsinline', '');
     videoContainer.appendChild(videoElement);
 
-    player = new Plyr(videoElement, {
-        controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'fullscreen'],
-        autoplay: false,
-        hideControls: false,
-        resetOnEnd: true,
-        clickToPlay: true,
-        loadSprite: true,
-    });
-
-    player.source = source; // Set the video source
-
-    document.getElementById('video-controls').style.display = 'block'; // Show the custom controls
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    initializePlyr();
-});
-
-function initializePlyr() {
-    const video = document.querySelector('#player');
-    player = new Plyr(video, {
-        controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'fullscreen'],
-        autoplay: false,
-        hideControls: false,
-        resetOnEnd: true,
-        clickToPlay: true,
-        loadSprite: true,
-    });
-}
-
-function showControls() {
-    const videoControls = document.getElementById('video-controls');
-    videoControls.style.display = 'block';
-    controlsVisible = true;
-    setTimeout(() => {
-        if (controlsVisible) {
-            videoControls.style.display = 'none';
-            controlsVisible = false;
+    // Initialize Plyr with the new video element
+    const player = new Plyr(videoElement, {
+        youtube: {
+            noCookie: true
         }
-    }, 3000); // Hide controls after 3 seconds of inactivity
+    });
+
+    // Set the video source
+    player.source = {
+        type: 'video',
+        sources: [
+            {
+                src: videoId,
+                provider: 'youtube'
+            }
+        ]
+    };
+
+    // Try to play the video and log the result
+    player.play().then(() => {
+        console.log('Video playing:', videoId);
+    }).catch(error => {
+        console.error('Error playing video:', error);
+    });
 }
 
-function hideControls() {
-    const videoControls = document.getElementById('video-controls');
-    videoControls.style.display = 'none';
-    controlsVisible = false;
-}
-
-function playVideo() {
-    player.play();
-}
-
-function pauseVideo() {
-    player.pause();
-}
-
-function toggleFullscreen() {
-    player.fullscreen.toggle();
-}
-
-function seekVideo(value) {
-    player.currentTime = (player.duration / 100) * value;
-}
-
-function toggleCaptions() {
-    player.toggleCaptions();
-}
-
-function setPlaybackRate(value) {
-    player.playbackRate = parseFloat(value);
-}
+// Initialize Plyr when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const playerElement = document.getElementById('player');
+    if (playerElement) {
+        new Plyr(playerElement, {
+            youtube: {
+                noCookie: true
+            }
+        });
+    }
+    console.log('Plyr initialized');
+});
