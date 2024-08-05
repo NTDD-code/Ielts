@@ -175,3 +175,17 @@ h3:hover {
         max-width: 100%;
     }
 }
+:root {
+    /* Plyr Custom Colors */
+    --plyr-color-main: #ec0505; /* Primary color (orange) */
+    --plyr-video-control-color: #ffffff; /* Control icons color (white) */
+    --plyr-video-control-background: #2c3e50; /* Control background color (dark grey) */
+    --plyr-control-hover: #df0000; /* Control hover color (light orange) */
+    --plyr-control-active: #e20c0c; /* Control active color (darker orange) */
+}
+
+/* Additional custom styles */
+.plyr__control--overlaid {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    color: #ffffff !important;
+}
