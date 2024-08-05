@@ -44,6 +44,7 @@ h3:hover {
     flex-direction: row;
     height: 100vh;
     overflow: hidden;
+    transition: margin-left 0.3s ease-in-out;
 }
 
 .course-sidebar {
@@ -51,13 +52,12 @@ h3:hover {
     background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
     display: block;
     overflow-y: auto;
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(0);
+    transition: width 0.3s ease-in-out, transform 0.3s ease-in-out;
     padding-bottom: 10px;
 }
 
 .course-sidebar.hidden {
-    transform: translateX(-100%);
+    display: none;
 }
 
 .course-section, .course-lectures {
@@ -106,12 +106,13 @@ h3:hover {
     padding: 20px;
     background-color: #ecf0f1;
     overflow-y: auto;
+    transition: padding-left 0.3s ease-in-out;
 }
 
 .video-container {
     position: relative;
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px;
     margin: auto;
     background-color: #000;
     border-radius: 10px;
@@ -175,6 +176,7 @@ h3:hover {
         max-width: 100%;
     }
 }
+
 :root {
     /* Plyr Custom Colors */
     --plyr-color-main: #ec0505; /* Primary color (orange) */
@@ -188,4 +190,12 @@ h3:hover {
 .plyr__control--overlaid {
     background-color: rgba(0, 0, 0, 0.7) !important;
     color: #ffffff !important;
+}
+
+.course-container.expanded {
+    margin-left: 0;
+}
+
+.course-content {
+    padding-left: 0;
 }
