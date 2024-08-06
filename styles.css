@@ -69,7 +69,7 @@ h3:hover {
     flex-direction: column;
     padding: 10px;
     background-color: #ffffff;
-    margin-bottom: 5px;
+    margin-bottom: 20px; /* Khoảng cách giữa các phần tử khóa học */
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     border-radius: 5px;
@@ -81,12 +81,15 @@ h3:hover {
     transform: translateY(-2px);
 }
 
-.course-lecture span:first-child {
-    font-weight: bold;
+.button-container {
+    margin-top: 10px; /* Khoảng cách giữa các phần tử khóa học và nút tải tài liệu */
+    display: flex;
+    flex-direction: column; /* Đặt các nút theo chiều dọc */
+    gap: 10px; /* Khoảng cách giữa các nút */
 }
 
 .download-button {
-    margin-top: 10px;
+    display: inline-block;
     padding: 8px 12px;
     background-color: #3498db;
     color: white;
@@ -99,6 +102,10 @@ h3:hover {
 
 .download-button:hover {
     background-color: #2980b9;
+}
+
+.course-lecture span:first-child {
+    font-weight: bold;
 }
 
 .course-content {
@@ -115,7 +122,7 @@ h3:hover {
     max-width: 1000px;
     margin: auto;
     background-color: #000;
-    border-radius: 10px;
+    border-radius: 15px; /* Adjust the value for the desired roundness */
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -123,7 +130,7 @@ h3:hover {
 #player {
     width: 100%;
     height: auto;
-    border-radius: 10px;
+    border-radius: 15px; /* Ensure the video corners match the container */
 }
 
 .video-overlay {
@@ -177,25 +184,63 @@ h3:hover {
     }
 }
 
+#search-bar {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 :root {
     /* Plyr Custom Colors */
     --plyr-color-main: #ec0505; /* Primary color (orange) */
     --plyr-video-control-color: #ffffff; /* Control icons color (white) */
     --plyr-video-control-background: #2c3e50; /* Control background color (dark grey) */
-    --plyr-control-hover: #df0000; /* Control hover color (light orange) */
-    --plyr-control-active: #e20c0c; /* Control active color (darker orange) */
+    --plyr-control-hover: #df0000; /* Hover color for controls (darker orange) */
+}
+/* Styles for notification */
+.notification {
+    display: none; /* Hidden by default */
+    background-color: #ffdddd;
+    color: #d8000c;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #d8000c;
 }
 
-/* Additional custom styles */
-.plyr__control--overlaid {
-    background-color: rgba(0, 0, 0, 0.7) !important;
-    color: #ffffff !important;
+.notification.show {
+    display: block;
 }
 
-.course-container.expanded {
-    margin-left: 0;
+/* Styles for popup notification */
+.popup-notification {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 20px; /* Adjust vertical position as needed */
+    right: 20px; /* Adjust horizontal position as needed */
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #f5c6cb;
+    z-index: 1000; /* Ensure it appears above other content */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    max-width: 300px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: opacity 0.5s ease;
 }
 
-.course-content {
-    padding-left: 0;
+/* Fade in and out effect */
+.popup-notification.fade-in {
+    opacity: 1;
+}
+
+.popup-notification.fade-out {
+    opacity: 0;
 }
