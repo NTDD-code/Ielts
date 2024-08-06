@@ -9,46 +9,85 @@
     <script src="https://kit.fontawesome.com/c62979c22b.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div id="no-results-message" style="display: none; color: red;">
+        Không tìm thấy nội dung bạn tìm.
+    </div>
+    
     <button class="icon-button" onclick="toggleCourseContent()"> 
         <i class="fas fa-bars"></i>
     </button>
     <div class="course-container">
         <div class="course-sidebar">
+            <div class="resizer"></div>
             <br><br>
             <h2 id="course-content-header">Course content</h2>
+            <input type="text" id="search-bar" placeholder="Search..." onkeyup="searchCourses()">
             <div class="course-section">
-                <h3 onclick="toggleSection('section1')">KHÓA HỌC IELTS WRITING 6.0+ (Dành cho Học viên)</h3>
+                <h3 onclick="toggleSection('section1')">KHÓA CHUYÊN ĐỀ VĂN 12 THẦY NHẬT (LIVE C)</h3>
             </div>
             <div id="section1" class="course-lectures">
-                <div class="course-lecture" onclick="loadVideo('ivA5kTyaryk', event)">
-                    <span>Unit 1: Task 1 Line 1</span>
-                    <span>time</span>
-                    <a href="path/to/document1.pdf" class="download-button" download>Download Document</a>
+                <div class="course-lecture" onclick="loadVideo('Br8kMsy3kek?si=BkZRiv0Lw8L-7YMD', event)">
+                    <span>Cảm Hoài - Đặng Dung</span>
+                    <span><i class="fa-solid fa-video"></i> Video</span>
                 </div>
-                <div class="course-lecture" onclick="loadVideo('https://youtu.be/2uG7o6Lvm_I', event)">
-                    <span>Unit 2: Task 1 Line 2</span>
-                    <span>time</span>
-                    <a href="path/to/document2.pdf" class="download-button" download>Download Document</a>
+                <div class="button-container">
+                    <a href="https://terabox.com/s/1dxkIcviA_7DuZDcuWZie6Q" target="_blank" class="download-button" download draggable="false">
+                        <i class="fa-solid fa-folder"></i> Download Document
+                    </a>
                 </div>
-                <div class="course-lecture" onclick="loadVideo('https://youtu.be/DKGpCCYnI_o', event)">
-                    <span>Unit 3: Task 1 Line 3</span>
-                    <span>time</span>
-                    <a href="path/to/document3.pdf" class="download-button" download>Download Document</a>
+                <br>
+                <div class="course-lecture" onclick="loadVideo('https://youtu.be/1I0Px50Qx7E', event)">
+                    <span>Cảm Hoài - Đặng Dung (live)</span>
+                    <span><i class="fa-solid fa-video"></i> Video</span>
                 </div>
+                <div class="button-container">
+                    <a href="https://terabox.com/s/1dxkIcviA_7DuZDcuWZie6Q" target="_blank" class="download-button" download draggable="false">
+                        <i class="fa-solid fa-folder"></i> Download Document
+                    </a>
+                </div>
+                <br>
+                <div class="course-lecture" onclick="loadVideo('https://youtu.be/djlu3szZisI?si=PjloH3ieyE_-8TpH', event)">
+                    <span>Muối của rừng</span>
+                    <span><i class="fa-solid fa-video"></i> Video</span>
+                </div>
+                <div class="button-container">
+                    <a href="https://terabox.com/s/1Ld7H5OA5YIO2BGi6wu19VQ" class="download-button" target="_blank" download draggable="false">
+                        <i class="fa-solid fa-folder"></i> Download Document
+                    </a>
+                </div>
+                <br>
+                <div class="course-lecture" onclick="loadVideo('Br8kMsy3kek?si=BkZRiv0Lw8L-7YMD', event)">
+                    <span>Cảm Hoài - Đặng Dung</span>
+                    <span><i class="fa-solid fa-video"></i> Video</span>
+                </div>
+                <div class="button-container">
+                    <a href="path/to/document1.pdf" target="_blank" class="download-button" download draggable="false">
+                        <i class="fa-solid fa-folder"></i> Download Document
+                    </a>
+                </div>
+                <br>
+                <div class="course-lecture" onclick="loadVideo('Br8kMsy3kek?si=BkZRiv0Lw8L-7YMD', event)">
+                    <span>Cảm Hoài - Đặng Dung</span>
+                    <span><i class="fa-solid fa-video"></i> Video</span>
+                </div>
+                <div class="button-container">
+                    <a href="path/to/document1.pdf" target="_blank" class="download-button" download draggable="false">
+                        <i class="fa-solid fa-folder"></i> Download Document
+                    </a>
+                </div>
+                <br>
+                
             </div>
         </div>
-
         <div class="course-content">
-            <div id="video-container" class="video-container">
-                <video id="player" controls crossorigin playsinline>
-                    <!-- Plyr will replace this with YouTube embed -->
+            <div id="video-container">
+                <video id="player" playsinline controls data-poster="/path/to/poster.jpg">
+                    <source src="https://youtu.be/Br8kMsy3kek?si=BkZRiv0Lw8L-7YMD" type="video/youtube" />
                 </video>
-                <div class="video-overlay" onmouseover="showControls()" onmouseout="hideControls()"></div>
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script> <!-- Plyr JavaScript -->
+    <script src="https://cdn.plyr.io/3.6.8/plyr.polyfilled.js"></script> <!-- Plyr JS -->
     <script src="scripts.js"></script>
 </body>
 </html>
