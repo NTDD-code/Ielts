@@ -151,3 +151,17 @@ window.toggleSection = function (sectionId) {
     section.classList.toggle('hidden');
 };
 window.searchCourses = searchCourses;
+
+function toggleTheme() {
+    const root = document.documentElement;
+    const themeIcon = document.getElementById('theme-icon');
+    root.classList.toggle('light-mode');
+    
+    if (root.classList.contains('light-mode')) {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+    } else {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+    }
+}
