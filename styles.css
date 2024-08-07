@@ -1,33 +1,74 @@
-/* General styles */
+:root {
+    --background-color: #141414;
+    --text-color: #fff;
+    --header-background-color: #222;
+    --header-hover-color: #1abc9c;
+    --icon-button-background: #e50914;
+    --course-sidebar-background: #181818;
+    --course-lecture-background: #222;
+    --course-lecture-hover: #333;
+    --button-background: #e50914;
+    --button-hover: #d40813;
+    --search-bar-background: #333;
+    --search-bar-border: #333;
+    --notification-background: #ffdddd;
+    --notification-color: #d8000c;
+    --popup-background: #f8d7da;
+    --popup-border: #f5c6cb;
+    --popup-color: #721c24;
+}
+
+/* Light mode variables */
+:root.light-mode {
+    --background-color: #fff;
+    --text-color: #000;
+    --header-background-color: #f1f1f1;
+    --header-hover-color: #1abc9c;
+    --icon-button-background: #e50914;
+    --course-sidebar-background: #f9f9f9;
+    --course-lecture-background: #f1f1f1;
+    --course-lecture-hover: #ddd;
+    --button-background: #e50914;
+    --button-hover: #d40813;
+    --search-bar-background: #fff;
+    --search-bar-border: #ccc;
+    --notification-background: #f8d7da;
+    --notification-color: #721c24;
+    --popup-background: #f8d7da;
+    --popup-border: #f5c6cb;
+    --popup-color: #721c24;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 h2, h3 {
     margin: 0;
     padding: 10px;
-    background-color: #2c3e50;
-    color: white;
+    background-color: var(--header-background-color);
+    color: var(--text-color);
     cursor: pointer;
 }
 
 h2 {
-    background-color: #34495e;
+    background-color: var(--header-background-color);
 }
 
 h3:hover {
-    background-color: #1abc9c;
+    background-color: var(--header-hover-color);
 }
 
 .icon-button {
     position: fixed;
     top: 10px;
     left: 10px;
-    background-color: #1abc9c;
-    color: white;
+    background-color: var(--icon-button-background);
+    color: var(--text-color);
     border: none;
     border-radius: 50%;
     padding: 10px;
@@ -49,7 +90,7 @@ h3:hover {
 
 .course-sidebar {
     width: 250px;
-    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    background: var(--course-sidebar-background);
     display: block;
     overflow-y: auto;
     transition: width 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -68,8 +109,8 @@ h3:hover {
     display: flex;
     flex-direction: column;
     padding: 10px;
-    background-color: #ffffff;
-    margin-bottom: 20px; /* Khoảng cách giữa các phần tử khóa học */
+    background-color: var(--course-lecture-background);
+    margin-bottom: 20px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
     border-radius: 5px;
@@ -77,22 +118,22 @@ h3:hover {
 }
 
 .course-lecture:hover {
-    background-color: #e0f7fa;
+    background-color: var(--course-lecture-hover);
     transform: translateY(-2px);
 }
 
 .button-container {
-    margin-top: 10px; /* Khoảng cách giữa các phần tử khóa học và nút tải tài liệu */
+    margin-top: 10px;
     display: flex;
-    flex-direction: column; /* Đặt các nút theo chiều dọc */
-    gap: 10px; /* Khoảng cách giữa các nút */
+    flex-direction: column;
+    gap: 10px;
 }
 
 .download-button {
     display: inline-block;
     padding: 8px 12px;
-    background-color: #3498db;
-    color: white;
+    background-color: var(--button-background);
+    color: var(--text-color);
     text-align: center;
     border-radius: 5px;
     text-decoration: none;
@@ -101,7 +142,7 @@ h3:hover {
 }
 
 .download-button:hover {
-    background-color: #2980b9;
+    background-color: var(--button-hover);
 }
 
 .course-lecture span:first-child {
@@ -111,7 +152,7 @@ h3:hover {
 .course-content {
     flex: 1;
     padding: 20px;
-    background-color: #ecf0f1;
+    background-color: var(--background-color);
     overflow-y: auto;
     transition: padding-left 0.3s ease-in-out;
 }
@@ -122,7 +163,7 @@ h3:hover {
     max-width: 1000px;
     margin: auto;
     background-color: #000;
-    border-radius: 15px; /* Adjust the value for the desired roundness */
+    border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -130,7 +171,7 @@ h3:hover {
 #player {
     width: 100%;
     height: auto;
-    border-radius: 15px; /* Ensure the video corners match the container */
+    border-radius: 15px;
 }
 
 .video-overlay {
@@ -147,40 +188,71 @@ h3:hover {
     display: block;
 }
 
-/* Media Queries */
 @media (max-width: 768px) {
-    .course-container {
-        flex-direction: column;
+    .icon-button {
+        top: 15px;
+        left: 15px;
+        font-size: 20px;
     }
 
-    .course-sidebar {
+    .icon-button.theme-toggle {
+        left: 60px; /* Space for both buttons */
+    }
+
+    .video-container {
         width: 100%;
-        transform: translateY(0);
+        border-radius: 10px;
     }
 
-    .course-sidebar.hidden {
-        transform: translateY(-100%);
+    .course-lecture {
+        font-size: 18px;
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .button-container {
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
     }
 }
 
 @media (max-width: 480px) {
-    .icon-button {
-        top: 5px;
-        left: 5px;
-        padding: 5px;
+    body {
+        font-size: 14px;
     }
 
-    .icon-button i {
+    .icon-button {
+        top: 10px;
+        left: 10px;
+        padding: 8px;
         font-size: 16px;
     }
 
-    .course-lecture {
-        font-size: 14px;
-        padding: 5px;
+    .icon-button.theme-toggle {
+        left: 50px;
     }
 
     .video-container {
-        max-width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .course-lecture {
+        font-size: 16px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        background-color: #333;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .button-container {
+        margin-top: 5px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
     }
 }
 
@@ -188,44 +260,37 @@ h3:hover {
     width: calc(100% - 20px);
     padding: 10px;
     margin: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--search-bar-border);
     border-radius: 5px;
+    background-color: var(--search-bar-background);
+    color: var(--text-color);
 }
 
-:root {
-    /* Plyr Custom Colors */
-    --plyr-color-main: #ec0505; /* Primary color (orange) */
-    --plyr-video-control-color: #ffffff; /* Control icons color (white) */
-    --plyr-video-control-background: #2c3e50; /* Control background color (dark grey) */
-    --plyr-control-hover: #df0000; /* Hover color for controls (darker orange) */
-}
-/* Styles for notification */
 .notification {
-    display: none; /* Hidden by default */
-    background-color: #ffdddd;
-    color: #d8000c;
+    display: none;
+    background-color: var(--notification-background);
+    color: var(--notification-color);
     padding: 10px;
     margin: 10px 0;
     border-radius: 5px;
-    border: 1px solid #d8000c;
+    border: 1px solid var(--notification-color);
 }
 
 .notification.show {
     display: block;
 }
 
-/* Styles for popup notification */
 .popup-notification {
-    display: none; /* Hidden by default */
+    display: none;
     position: fixed;
-    top: 20px; /* Adjust vertical position as needed */
-    right: 20px; /* Adjust horizontal position as needed */
-    background-color: #f8d7da;
-    color: #721c24;
+    top: 20px;
+    right: 20px;
+    background-color: var(--popup-background);
+    color: var(--popup-color);
     padding: 15px;
     border-radius: 8px;
-    border: 1px solid #f5c6cb;
-    z-index: 1000; /* Ensure it appears above other content */
+    border: 1px solid var(--popup-border);
+    z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     font-size: 16px;
     font-family: Arial, sans-serif;
@@ -236,11 +301,31 @@ h3:hover {
     transition: opacity 0.5s ease;
 }
 
-/* Fade in and out effect */
 .popup-notification.fade-in {
     opacity: 1;
 }
 
 .popup-notification.fade-out {
     opacity: 0;
+}
+:root {
+    --plyr-color-main: #e50914;
+    --plyr-video-control-color: #fff;
+    --plyr-video-control-background: #333;
+    --plyr-control-hover: #d40813;
+}
+.icon-button.theme-toggle {
+    right: 10px; /* Adjust the position as needed */
+    left: auto; /* Ensure it's not on the left side */
+    background-color: var(--icon-button-background);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.icon-button.theme-toggle i {
+    font-size: 20px;
 }
