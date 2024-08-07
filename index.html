@@ -9,6 +9,11 @@
     <script src="https://kit.fontawesome.com/c62979c22b.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div id="notification" class="notification">
+        <span class="notification-text">Website đang được cập nhật!</span>
+        <button id="close-btn" class="close-btn">&times;</button>
+    </div>
+
     <div id="no-results-message" style="display: none; color: red;">
         Không tìm thấy nội dung bạn tìm.
     </div>
@@ -25,11 +30,15 @@
             <div class="resizer"></div>
             <br><br>
             <h2 id="course-content-header">Course content</h2>
-            <input type="text" id="search-bar" placeholder="Search..." onkeyup="searchCourses()">
+            
+            <input type="text" id="search-bar" placeholder="🔍 Search..." onkeyup="searchCourses()"> 
             <div class="course-section">
-                <h3 onclick="toggleSection('section1')">KHÓA CHUYÊN ĐỀ VĂN 12 THẦY NHẬT (LIVE C)</h3>
+                <button class="section-toggle" onclick="toggleSection('section1', event)">
+                    <i class="fas fa-chevron-down"></i>
+                    Video quay sẵn + Livestream
+                </button>
             </div>
-            <div id="section1" class="course-lectures">
+            <div id="section1" class="course-lectures hidden">
                 <div class="course-lecture" onclick="loadVideo('Br8kMsy3kek?si=BkZRiv0Lw8L-7YMD', event)">
                     <span>Cảm Hoài - Đặng Dung</span>
                     <span><i class="fa-solid fa-video"></i> Video</span>
@@ -125,9 +134,16 @@
                     <span><i class="fa-solid fa-video"></i> Video</span>
                 </div>
                 <br>
+                <!-- Course lectures here -->
             </div>
+            
+            
         </div>
         <div class="course-content">
+            <div id="search-result-message" class="search-result-message" style="display: none;">
+                Không tìm thấy nội dung bạn tìm.
+            </div>
+            
             <div id="video-container">
                 <video id="player" playsinline controls data-poster="/path/to/poster.jpg">
                     <source src="https://youtu.be/Br8kMsy3kek?si=BkZRiv0Lw8L-7YMD" type="video/youtube" />
