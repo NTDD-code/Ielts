@@ -144,6 +144,10 @@ h3:hover {
 .download-button:hover {
     background-color: var(--button-hover);
 }
+.download-button {
+    display: none; /* Ẩn các nút tải xuống mặc định */
+}
+
 
 .course-lecture span:first-child {
     font-weight: bold;
@@ -257,11 +261,11 @@ h3:hover {
 }
 
 #search-bar {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin: 10px;
+    width: calc(85% - 20px);
+    padding: 15px;
+    margin: 8px;
     border: 1px solid var(--search-bar-border);
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: var(--search-bar-background);
     color: var(--text-color);
 }
@@ -328,4 +332,86 @@ h3:hover {
 
 .icon-button.theme-toggle i {
     font-size: 20px;
+}
+/* list */
+
+.course-section {
+    margin-bottom: 10px;
+}
+
+.section-toggle {
+    display: flex;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.section-toggle i {
+    margin-right: 10px;
+    font-size: 20px;
+    transition: transform 0.3s ease;
+}
+
+.section-toggle:hover {
+    background-color: #0056b3;
+}
+
+.section-toggle:focus {
+    outline: none;
+}
+
+.hidden {
+    display: none;
+}
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.notification-text {
+    margin-right: 10px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.close-btn:hover {
+    color: #ffdddd;
+}
+.search-result-message {
+    background-color: var(--popup-background);
+    color: var(--popup-color);
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--popup-border);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    max-width: 100%;
+    margin: 20px 0;
 }
