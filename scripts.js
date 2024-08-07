@@ -94,10 +94,12 @@ function adjustVideoSize() {
 }
 
 // Search functionality with notification
+// Function to handle search and display results
 function searchCourses() {
     const input = document.getElementById('search-bar');
     const filter = input.value.toLowerCase();
     const lectures = document.querySelectorAll('.course-lecture');
+    const searchResultMessage = document.getElementById('search-result-message');
     let hasResults = false;
 
     lectures.forEach(lecture => {
@@ -110,28 +112,16 @@ function searchCourses() {
         }
     });
 
-    const popupNotification = document.querySelector('.popup-notification');
-
     if (!hasResults) {
-        if (popupNotification) {
-            popupNotification.textContent = 'Không tìm thấy nội dung bạn muốn tìm.';
-            popupNotification.classList.add('fade-in');
-            popupNotification.classList.remove('fade-out');
-            popupNotification.style.display = 'block';
-
-            setTimeout(() => {
-                popupNotification.classList.add('fade-out');
-                popupNotification.classList.remove('fade-in');
-                setTimeout(() => {
-                    popupNotification.style.display = 'none';
-                }, 500); // Match the fade-out duration
-            }, 5000); // Display duration
-        }
+        searchResultMessage.textContent = 'Không tìm thấy nội dung bạn tìm.';
+        searchResultMessage.style.display = 'block';
+        
+        // Ẩn thông báo sau 5 giây
+        setTimeout(() => {
+            searchResultMessage.style.display = 'none';
+        }, 5000);
     } else {
-        if (popupNotification) {
-            popupNotification.classList.remove('fade-in', 'fade-out');
-            popupNotification.style.display = 'none';
-        }
+        searchResultMessage.style.display = 'none';
     }
 }
 
@@ -165,3 +155,16 @@ function toggleTheme() {
         themeIcon.classList.add('fa-sun');
     }
 }
+document.addEventListener("DOMContentLoaded", function() {
+    const notification = document.getElementById("notification");
+    const closeButton = document.getElementById("close-btn");
+
+    function hideNotification() {
+        notification.style.display = "none";
+    }
+
+    closeButton.addEventListener("click", hideNotification);
+
+    // Automatically hide notification after 5 seconds
+    setTimeout(hideNotification, 5000);
+});
